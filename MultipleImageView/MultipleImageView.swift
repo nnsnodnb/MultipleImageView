@@ -9,6 +9,7 @@ import UIKit
 
 public protocol MultipleImageViewDelegate: AnyObject {
 
+    func multipleImageViewShouldGetImage(_ imageView: UIImageView, sourceForURL url: URL, index: Int)
     func multipleImageViewDidSelect(_ imageView: UIImageView, index: Int)
 }
 
@@ -21,10 +22,7 @@ public final class MultipleImageView: UIView {
     @IBInspectable
     public var placeholderImage: UIImage? {
         didSet {
-            topLeftImageView.image = placeholderImage
-            topRightImageView.image = placeholderImage
-            bottomLeftImageView.image = placeholderImage
-            bottomRightImageView.image = placeholderImage
+            setPlaceholderImage()
         }
     }
     @IBInspectable
@@ -35,6 +33,8 @@ public final class MultipleImageView: UIView {
             rightStackView.spacing = spacing
         }
     }
+
+    public var sources: [Source] = []
 
     private lazy var topStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [leftStackView, rightStackView])
@@ -105,6 +105,82 @@ public final class MultipleImageView: UIView {
     }
 }
 
+// MARK: - Public method
+public extension MultipleImageView {
+
+    func reloadData() {
+        setPlaceholderImage()
+        switch sources.count {
+        case 1:
+            // UIStackView
+            leftStackView.isHidden = false
+            rightStackView.isHidden = true
+            // UIImageView
+            topLeftImageView.isHidden = false
+            topRightImageView.isHidden = true
+            bottomLeftImageView.isHidden = true
+            bottomRightImageView.isHidden = true
+        case 2:
+            // UIStackView
+            leftStackView.isHidden = false
+            rightStackView.isHidden = false
+            // UIImageView
+            topLeftImageView.isHidden = false
+            topRightImageView.isHidden = false
+            bottomLeftImageView.isHidden = true
+            bottomRightImageView.isHidden = true
+        case 3:
+            // UIStackView
+            leftStackView.isHidden = false
+            rightStackView.isHidden = false
+            // UIImageView
+            topLeftImageView.isHidden = false
+            topRightImageView.isHidden = false
+            bottomLeftImageView.isHidden = true
+            bottomRightImageView.isHidden = false
+        case 4:
+            // UIStackView
+            leftStackView.isHidden = false
+            rightStackView.isHidden = false
+            // UIImageView
+            topLeftImageView.isHidden = false
+            topRightImageView.isHidden = false
+            bottomLeftImageView.isHidden = false
+            bottomRightImageView.isHidden = false
+        default:
+            leftStackView.isHidden = true
+            rightStackView.isHidden = true
+            topLeftImageView.isHidden = true
+            topRightImageView.isHidden = true
+            bottomLeftImageView.isHidden = true
+            bottomRightImageView.isHidden = true
+            return
+        }
+        (0..<4).forEach { index in
+            guard let source = sources[safe: index],
+                  let imageView = getImageView(from: index) else { return }
+            switch source {
+            case .uiimage(let image):
+                imageView.image = image
+            case .url(let url):
+                delegate?.multipleImageViewShouldGetImage(imageView, sourceForURL: url, index: index)
+            case .custom(let handler):
+                handler(imageView)
+            }
+        }
+    }
+}
+
+// MARK: - Source
+public extension MultipleImageView {
+
+    enum Source {
+        case uiimage(UIImage)
+        case url(URL)
+        case custom((UIImageView) -> Void)
+    }
+}
+
 // MARK: - Private method
 private extension MultipleImageView {
 
@@ -126,6 +202,28 @@ private extension MultipleImageView {
         let bottomRightTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapBottomRightGesture(_:)))
         bottomRightImageView.addGestureRecognizer(bottomRightTapGestureRecognizer)
     }
+
+    func setPlaceholderImage() {
+        topLeftImageView.image = placeholderImage
+        topRightImageView.image = placeholderImage
+        bottomLeftImageView.image = placeholderImage
+        bottomRightImageView.image = placeholderImage
+    }
+
+    func getImageView(from index: Int) -> UIImageView? {
+        switch (sources.count, index) {
+        case (1, 0), (2, 0), (3, 0), (4, 0):
+            return topLeftImageView
+        case (2, 1), (3, 1), (4, 1):
+            return topRightImageView
+        case (4, 2):
+            return bottomLeftImageView
+        case (3, 2), (4, 3):
+            return bottomRightImageView
+        default:
+            return nil
+        }
+    }
 }
 
 // MARK: - Selector target
@@ -144,6 +242,6 @@ private extension MultipleImageView {
     }
 
     @objc func onTapBottomRightGesture(_ gesture: UITapGestureRecognizer) {
-        delegate?.multipleImageViewDidSelect(bottomRightImageView, index: 3)
+        delegate?.multipleImageViewDidSelect(bottomRightImageView, index: sources.count == 4 ? 3 : 2)
     }
 }

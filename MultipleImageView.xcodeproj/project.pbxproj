@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CFDCA86B26C12B3100FC9770 /* MultipleImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDCA86926C12B3100FC9770 /* MultipleImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFDCA87326C12B4F00FC9770 /* MultipleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDCA87226C12B4F00FC9770 /* MultipleImageView.swift */; };
+		CFDCA8A926C1394600FC9770 /* Array+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDCA8A826C1394600FC9770 /* Array+Subscript.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,7 @@
 		CFDCA86926C12B3100FC9770 /* MultipleImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleImageView.h; sourceTree = "<group>"; };
 		CFDCA86A26C12B3100FC9770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFDCA87226C12B4F00FC9770 /* MultipleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImageView.swift; sourceTree = "<group>"; };
+		CFDCA8A826C1394600FC9770 /* Array+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Subscript.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,11 +50,20 @@
 		CFDCA86826C12B3100FC9770 /* MultipleImageView */ = {
 			isa = PBXGroup;
 			children = (
+				CFDCA8A726C1392C00FC9770 /* Internal */,
 				CFDCA86926C12B3100FC9770 /* MultipleImageView.h */,
 				CFDCA86A26C12B3100FC9770 /* Info.plist */,
 				CFDCA87226C12B4F00FC9770 /* MultipleImageView.swift */,
 			);
 			path = MultipleImageView;
+			sourceTree = "<group>";
+		};
+		CFDCA8A726C1392C00FC9770 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				CFDCA8A826C1394600FC9770 /* Array+Subscript.swift */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDCA87326C12B4F00FC9770 /* MultipleImageView.swift in Sources */,
+				CFDCA8A926C1394600FC9770 /* Array+Subscript.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

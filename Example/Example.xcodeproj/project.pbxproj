@@ -108,6 +108,8 @@
 			dependencies = (
 			);
 			name = Example;
+			packageProductDependencies = (
+			);
 			productName = Example;
 			productReference = CFDCA87F26C12BA700FC9770 /* Example.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +137,8 @@
 				Base,
 			);
 			mainGroup = CFDCA87626C12BA700FC9770;
+			packageReferences = (
+			);
 			productRefGroup = CFDCA88026C12BA700FC9770 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -312,7 +316,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99649YXF6E;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,7 +335,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99649YXF6E;
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
