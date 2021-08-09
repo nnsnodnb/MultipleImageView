@@ -19,6 +19,7 @@ final class ViewController: UIViewController {
         }
     }
 
+    // swiftlint:disable line_length
     private lazy var sources: [MultipleImageView.Source] = [
         .uiimage(UIImage(systemName: "a.book.closed")!),
         .url(URL(string: "https://1.bp.blogspot.com/-bJ0oTWgJWrk/XnoiWQBOYYI/AAAAAAABX5Y/OyhdHjIA5_0737fyRKpwEpy34x32s_G9wCNcBGAsYHQ/s450/olympics_tokyo_2021_line.png")!),
@@ -34,6 +35,7 @@ final class ViewController: UIViewController {
             }
         }
     ]
+    // swiftlint:enable line_length
 
     override func viewDidLoad() {
         super.viewDidLoad()

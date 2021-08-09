@@ -17,7 +17,7 @@ public protocol MultipleImageViewDelegate: AnyObject {
 public final class MultipleImageView: UIView {
 
     // MARK: - Properties
-    public var delegate: MultipleImageViewDelegate?
+    public weak var delegate: MultipleImageViewDelegate?
 
     @IBInspectable
     public var placeholderImage: UIImage? {
@@ -188,18 +188,46 @@ private extension MultipleImageView {
         backgroundColor = .clear
         // StackView
         addSubview(topStackView)
-        NSLayoutConstraint(item: topStackView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: topStackView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: topStackView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: topStackView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: topStackView,
+                           attribute: .top,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .top,
+                           multiplier: 1,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: topStackView,
+                           attribute: .left,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .left,
+                           multiplier: 1,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: topStackView,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .bottom,
+                           multiplier: 1,
+                           constant: 0).isActive = true
+        NSLayoutConstraint(item: topStackView,
+                           attribute: .right,
+                           relatedBy: .equal,
+                           toItem: self,
+                           attribute: .right,
+                           multiplier: 1,
+                           constant: 0).isActive = true
         // UITapGestureRecognizer
-        let topLeftTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapTopLeftGeture(_:)))
+        let topLeftTapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(onTapTopLeftGeture(_:)))
         topLeftImageView.addGestureRecognizer(topLeftTapGestureRecognizer)
-        let topRightTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapTopRightGesture(_:)))
+        let topRightTapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                  action: #selector(onTapTopRightGesture(_:)))
         topRightImageView.addGestureRecognizer(topRightTapGestureRecognizer)
-        let bottomLeftTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapBottomLeftGesture(_:)))
+        let bottomLeftTapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                    action: #selector(onTapBottomLeftGesture(_:)))
         bottomLeftImageView.addGestureRecognizer(bottomLeftTapGestureRecognizer)
-        let bottomRightTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapBottomRightGesture(_:)))
+        let bottomRightTapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                     action: #selector(onTapBottomRightGesture(_:)))
         bottomRightImageView.addGestureRecognizer(bottomRightTapGestureRecognizer)
     }
 
