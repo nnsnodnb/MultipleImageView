@@ -1,0 +1,149 @@
+//
+//  MultipleImageView.swift
+//
+//
+//  Created by Yuya Oka on 2021/08/09.
+//
+
+import UIKit
+
+public protocol MultipleImageViewDelegate: AnyObject {
+
+    func multipleImageViewDidSelect(_ imageView: UIImageView, index: Int)
+}
+
+@IBDesignable
+public final class MultipleImageView: UIView {
+
+    // MARK: - Properties
+    public var delegate: MultipleImageViewDelegate?
+
+    @IBInspectable
+    public var placeholderImage: UIImage? {
+        didSet {
+            topLeftImageView.image = placeholderImage
+            topRightImageView.image = placeholderImage
+            bottomLeftImageView.image = placeholderImage
+            bottomRightImageView.image = placeholderImage
+        }
+    }
+    @IBInspectable
+    public var spacing: CGFloat = 0 {
+        didSet {
+            topStackView.spacing = spacing
+            leftStackView.spacing = spacing
+            rightStackView.spacing = spacing
+        }
+    }
+
+    private lazy var topStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [leftStackView, rightStackView])
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = spacing
+        stackView.clipsToBounds = true
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    private lazy var leftStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [topLeftImageView, bottomLeftImageView])
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = spacing
+        stackView.clipsToBounds = true
+        return stackView
+    }()
+    private lazy var rightStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [topRightImageView, bottomRightImageView])
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = spacing
+        stackView.clipsToBounds = true
+        return stackView
+    }()
+    private lazy var topLeftImageView: UIImageView = {
+        let imageView = UIImageView(image: placeholderImage)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
+    private lazy var topRightImageView: UIImageView = {
+        let imageView = UIImageView(image: placeholderImage)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
+    private lazy var bottomLeftImageView: UIImageView = {
+        let imageView = UIImageView(image: placeholderImage)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
+    private lazy var bottomRightImageView: UIImageView = {
+        let imageView = UIImageView(image: placeholderImage)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
+
+    // MARK: - Initialize
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        initView()
+    }
+
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        initView()
+    }
+}
+
+// MARK: - Private method
+private extension MultipleImageView {
+
+    func initView() {
+        backgroundColor = .clear
+        // StackView
+        addSubview(topStackView)
+        NSLayoutConstraint(item: topStackView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: topStackView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: topStackView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: topStackView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0).isActive = true
+        // UITapGestureRecognizer
+        let topLeftTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapTopLeftGeture(_:)))
+        topLeftImageView.addGestureRecognizer(topLeftTapGestureRecognizer)
+        let topRightTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapTopRightGesture(_:)))
+        topRightImageView.addGestureRecognizer(topRightTapGestureRecognizer)
+        let bottomLeftTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapBottomLeftGesture(_:)))
+        bottomLeftImageView.addGestureRecognizer(bottomLeftTapGestureRecognizer)
+        let bottomRightTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onTapBottomRightGesture(_:)))
+        bottomRightImageView.addGestureRecognizer(bottomRightTapGestureRecognizer)
+    }
+}
+
+// MARK: - Selector target
+private extension MultipleImageView {
+
+    @objc func onTapTopLeftGeture(_ gesture: UITapGestureRecognizer) {
+        delegate?.multipleImageViewDidSelect(topLeftImageView, index: 0)
+    }
+
+    @objc func onTapTopRightGesture(_ gesture: UITapGestureRecognizer) {
+        delegate?.multipleImageViewDidSelect(topRightImageView, index: 1)
+    }
+
+    @objc func onTapBottomLeftGesture(_ gesture: UITapGestureRecognizer) {
+        delegate?.multipleImageViewDidSelect(bottomLeftImageView, index: 2)
+    }
+
+    @objc func onTapBottomRightGesture(_ gesture: UITapGestureRecognizer) {
+        delegate?.multipleImageViewDidSelect(bottomRightImageView, index: 3)
+    }
+}
