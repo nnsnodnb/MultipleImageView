@@ -1,11 +1,16 @@
 name: Podspec
 
 on:
+  pull_request:
+    paths:
+      - "MultipleImageView.podspec"
+      - "Gemfile.lock"
+      - ".github/workflows/podspec.yml"
   push:
     paths:
       - "MultipleImageView.podspec"
       - "Gemfile.lock"
-      - ".github/workflows/linter.yml"
+      - ".github/workflows/podspec.yml"
 
 jobs:
   podspec:
