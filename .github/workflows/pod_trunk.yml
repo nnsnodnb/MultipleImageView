@@ -3,7 +3,7 @@ name: CocoaPods Trunk
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "*.*.*"
 
 jobs:
   pod_trunk:
