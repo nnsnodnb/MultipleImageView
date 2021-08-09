@@ -7,19 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		021EE746118832E6631E0D24 /* Pods_MultipleImageView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D192AEFA769357CAA4AF6CCB /* Pods_MultipleImageView.framework */; };
 		CFDCA86B26C12B3100FC9770 /* MultipleImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = CFDCA86926C12B3100FC9770 /* MultipleImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CFDCA87326C12B4F00FC9770 /* MultipleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDCA87226C12B4F00FC9770 /* MultipleImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		599A5D18449E4F87AC458A99 /* Pods-MultipleImageView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultipleImageView.release.xcconfig"; path = "Target Support Files/Pods-MultipleImageView/Pods-MultipleImageView.release.xcconfig"; sourceTree = "<group>"; };
 		CFDCA86626C12B3100FC9770 /* MultipleImageView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MultipleImageView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFDCA86926C12B3100FC9770 /* MultipleImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleImageView.h; sourceTree = "<group>"; };
 		CFDCA86A26C12B3100FC9770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFDCA87226C12B4F00FC9770 /* MultipleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleImageView.swift; sourceTree = "<group>"; };
-		D192AEFA769357CAA4AF6CCB /* Pods_MultipleImageView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultipleImageView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE66E8C17C82C653F8242528 /* Pods-MultipleImageView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultipleImageView.debug.xcconfig"; path = "Target Support Files/Pods-MultipleImageView/Pods-MultipleImageView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,37 +23,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				021EE746118832E6631E0D24 /* Pods_MultipleImageView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8DF1E8AD8731025B59A50798 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DE66E8C17C82C653F8242528 /* Pods-MultipleImageView.debug.xcconfig */,
-				599A5D18449E4F87AC458A99 /* Pods-MultipleImageView.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		C208D5EC0FEB90D3208CCA27 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D192AEFA769357CAA4AF6CCB /* Pods_MultipleImageView.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		CFDCA85C26C12B3100FC9770 = {
 			isa = PBXGroup;
 			children = (
 				CFDCA86826C12B3100FC9770 /* MultipleImageView */,
 				CFDCA86726C12B3100FC9770 /* Products */,
-				8DF1E8AD8731025B59A50798 /* Pods */,
-				C208D5EC0FEB90D3208CCA27 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +73,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFDCA86E26C12B3100FC9770 /* Build configuration list for PBXNativeTarget "MultipleImageView" */;
 			buildPhases = (
-				8CF7A604B8F2B175E8CF8942 /* [CP] Check Pods Manifest.lock */,
 				CFDCA86126C12B3100FC9770 /* Headers */,
 				CFDCA86226C12B3100FC9770 /* Sources */,
 				CFDCA86326C12B3100FC9770 /* Frameworks */,
 				CFDCA86426C12B3100FC9770 /* Resources */,
-				CFDCA8B326C14AE700FC9770 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -154,49 +128,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8CF7A604B8F2B175E8CF8942 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MultipleImageView-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CFDCA8B326C14AE700FC9770 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CFDCA86226C12B3100FC9770 /* Sources */ = {
@@ -334,7 +265,6 @@
 		};
 		CFDCA86F26C12B3100FC9770 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE66E8C17C82C653F8242528 /* Pods-MultipleImageView.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -363,7 +293,6 @@
 		};
 		CFDCA87026C12B3100FC9770 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 599A5D18449E4F87AC458A99 /* Pods-MultipleImageView.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
