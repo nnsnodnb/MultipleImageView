@@ -3,7 +3,7 @@ name: Actions Lint
 on: pull_request
 
 jobs:
-  actions_lint:
+  actionlint:
     runs-on: ubuntu-latest
 
     steps:
