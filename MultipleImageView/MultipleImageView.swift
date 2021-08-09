@@ -157,7 +157,7 @@ public extension MultipleImageView {
             return
         }
         (0..<4).forEach { index in
-            guard let source = sources[safe: index],
+            guard let source = (sources.indices.contains(index) ? sources[index] : nil),
                   let imageView = getImageView(from: index) else { return }
             switch source {
             case .uiimage(let image):
