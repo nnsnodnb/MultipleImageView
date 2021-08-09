@@ -1,0 +1,28 @@
+name: Podspec
+
+on:
+  pull_request:
+    paths:
+      - "MultipleImageView.podspec"
+      - "Gemfile.lock"
+      - ".github/workflows/podspec.yml"
+  push:
+    paths:
+      - "MultipleImageView.podspec"
+      - "Gemfile.lock"
+      - ".github/workflows/podspec.yml"
+
+jobs:
+  podspec:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    
+    - name: Lint
+      run: bundle exec pod lib lint MultipleImageView.podspec

@@ -11,7 +11,7 @@ let package = Package(
     products: [
         .library(
             name: "MultipleImageView",
-            targets: ["MultipleImageView"]),
+            targets: ["MultipleImageView"])
     ],
     dependencies: [
     ],

@@ -1,0 +1,24 @@
+name: CocoaPods Trunk
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  pod_trunk:
+    runs-on: macos-latest
+    timeout-minutes: 10
+  
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    - name: Trunk push
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+      run: bundle exec pod trunk push MultipleImageView.podspec
