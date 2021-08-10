@@ -38,7 +38,7 @@ let package = Package(
 
 ## Example
 
-See Example project.
+Please see Example project.
 
 ## License
 
