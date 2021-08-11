@@ -9,6 +9,7 @@
 [![CocoaPods Trunk](https://github.com/nnsnodnb/MultipleImageView/actions/workflows/pod_trunk.yml/badge.svg)](https://github.com/nnsnodnb/MultipleImageView/actions/workflows/pod_trunk.yml)
 [![Podspec](https://github.com/nnsnodnb/MultipleImageView/actions/workflows/podspec.yml/badge.svg)](https://github.com/nnsnodnb/MultipleImageView/actions/workflows/podspec.yml)
 [![Swift build](https://github.com/nnsnodnb/MultipleImageView/actions/workflows/build.yml/badge.svg)](https://github.com/nnsnodnb/MultipleImageView/actions/workflows/build.yml)
+[![SwiftLint](https://github.com/nnsnodnb/MultipleImageView/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/nnsnodnb/MultipleImageView/actions/workflows/swiftlint.yml)
 
 Displaying multiple images like Twitter.
 
