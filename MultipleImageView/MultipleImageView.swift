@@ -118,9 +118,8 @@ public extension MultipleImageView {
         topRightImageView.isHidden = sources.count < 2
         bottomLeftImageView.isHidden = sources.count != 4
         bottomRightImageView.isHidden = sources.count < 3
-        (0..<4).forEach { index in
-            guard let source = (sources.indices.contains(index) ? sources[index] : nil),
-                  let imageView = getImageView(from: index) else { return }
+        sources.enumerated().forEach { index, source in
+            guard let imageView = getImageView(from: index) else { return }
             switch source {
             case .uiimage(let image):
                 imageView.image = image
