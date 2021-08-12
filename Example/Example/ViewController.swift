@@ -59,10 +59,6 @@ extension ViewController: MultipleImageViewDelegate {
         }
     }
 
-    func multipleImageViewShouldGetImage(_ imageView: UIImageView, sourceForCustom index: Int) {
-
-    }
-
     func multipleImageViewDidSelect(_ imageView: UIImageView, index: Int) {
         print("Tapped index: \(index)")
     }
