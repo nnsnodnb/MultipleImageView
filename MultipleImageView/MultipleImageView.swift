@@ -110,52 +110,14 @@ public extension MultipleImageView {
 
     func reloadData() {
         setPlaceholderImage()
-        switch sources.count {
-        case 1:
-            // UIStackView
-            leftStackView.isHidden = false
-            rightStackView.isHidden = true
-            // UIImageView
-            topLeftImageView.isHidden = false
-            topRightImageView.isHidden = true
-            bottomLeftImageView.isHidden = true
-            bottomRightImageView.isHidden = true
-        case 2:
-            // UIStackView
-            leftStackView.isHidden = false
-            rightStackView.isHidden = false
-            // UIImageView
-            topLeftImageView.isHidden = false
-            topRightImageView.isHidden = false
-            bottomLeftImageView.isHidden = true
-            bottomRightImageView.isHidden = true
-        case 3:
-            // UIStackView
-            leftStackView.isHidden = false
-            rightStackView.isHidden = false
-            // UIImageView
-            topLeftImageView.isHidden = false
-            topRightImageView.isHidden = false
-            bottomLeftImageView.isHidden = true
-            bottomRightImageView.isHidden = false
-        case 4:
-            // UIStackView
-            leftStackView.isHidden = false
-            rightStackView.isHidden = false
-            // UIImageView
-            topLeftImageView.isHidden = false
-            topRightImageView.isHidden = false
-            bottomLeftImageView.isHidden = false
-            bottomRightImageView.isHidden = false
-        default:
-            leftStackView.isHidden = true
-            rightStackView.isHidden = true
-            topLeftImageView.isHidden = true
-            topRightImageView.isHidden = true
-            bottomLeftImageView.isHidden = true
-            bottomRightImageView.isHidden = true
-            return
-        }
+        // UIStackView
+        leftStackView.isHidden = sources.isEmpty
+        rightStackView.isHidden = sources.count < 2
+        // UIImageView
+        topLeftImageView.isHidden = sources.isEmpty
+        topRightImageView.isHidden = sources.count < 2
+        bottomLeftImageView.isHidden = sources.count != 4
+        bottomRightImageView.isHidden = sources.count < 3
         (0..<4).forEach { index in
             guard let source = (sources.indices.contains(index) ? sources[index] : nil),
                   let imageView = getImageView(from: index) else { return }
