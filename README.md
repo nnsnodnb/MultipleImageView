@@ -47,9 +47,39 @@ let package = Package(
 )
 ```
 
-## Example
+## Usage
 
-Please see Example project.
+```swift
+import MultipleImageView
+
+final class SomeView: UIView, MultipleImageViewDelegate {
+
+    func configure() {
+        let imageView = MultipleImageView(frame: .zero)
+        addSubview(imageView)
+        // Autolayout
+        imageView.sources = [
+            .uiimage(anyImage),
+            .url(anyURL),
+            .custom { imageView in
+                // something fetch image
+                imageView.image = image
+            }
+        ]
+        imageView.delegate = self
+    }
+
+    // MARK: - MultipleImageViewDelegate
+    func multipleImageViewShouldGetImage(_ imageView: UIImageView, sourceForURL url: URL, index: Int) {
+        // Your project's image fetch & cache algorithm.
+    }
+
+    func multipleImageViewDidSelect(_ imageView: UIImageView, index: Int) {
+    }
+}
+```
+
+And please see Example project.
 
 ## License
 
