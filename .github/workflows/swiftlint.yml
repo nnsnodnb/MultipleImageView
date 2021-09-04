@@ -9,6 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: norio-nomura/action-swiftlint@3.2.1
+    - uses: pepibumur/action-swiftlint@0d4afd006bb24e4525b5afcefd4ab5e2537193ac
       env:
-        DIFF_BASE: ${{ github.base_ref }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
