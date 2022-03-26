@@ -1,3 +1,3 @@
 #!/bin/sh
 
-pod lib lint MultipleImageView.podspec
+bundle exec pod lib lint MultipleImageView.podspec
