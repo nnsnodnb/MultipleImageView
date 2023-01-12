@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                  = "MultipleImageView"
-  spec.version               = "0.1.3"
+  spec.version               = "0.2.0"
   spec.summary               = "Displaying multiple images like Twitter."
   spec.homepage              = "https://github.com/nnsnodnb/MultipleImageView"
   spec.swift_version         = "5.2"

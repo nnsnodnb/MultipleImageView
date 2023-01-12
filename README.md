@@ -38,7 +38,7 @@ let package = Package(
     dependencies: [
         .package(name: "MultipleImageView",
                  url: "https://github.com/nnsnodnb/MultipleImageView.git",
-                 from: "0.1.0")
+                 from: "0.2.0")
     ],
     .targets: [
         .target(name: "SampleApp,
