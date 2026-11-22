@@ -3,13 +3,13 @@ Pod::Spec.new do |spec|
   spec.version               = "0.2.0"
   spec.summary               = "Displaying multiple images like Twitter."
   spec.homepage              = "https://github.com/nnsnodnb/MultipleImageView"
-  spec.swift_version         = "5.2"
+  spec.swift_version         = "6.0"
   spec.license               = { :type => "MIT", :file => "LICENSE" }
   spec.author                = { "nnsnodnb" => "nnsnodnb@gmail.com" }
   spec.social_media_url      = "https://twitter.com/nnsnodnb"
   spec.platform              = :ios
-  spec.platform              = :ios, "11.0"
-  spec.ios.deployment_target = "11.0"
+  spec.platform              = :ios, "15.0"
+  spec.ios.deployment_target = "15.0"
   spec.ios.framework         = "UIKit"
   spec.source                = { :git => "https://github.com/nnsnodnb/#{spec.name}.git", :tag => "#{spec.version}" }
   spec.source_files          = "#{spec.name}", "#{spec.name}/*.{h,swift}"

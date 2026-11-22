@@ -11,6 +11,7 @@ jobs:
 
      - name: Build
        run: |
-         swift build \
-           --sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)" \
-           --triple arm64-apple-ios15.0-simulator
+         xcodebuild build \
+           -scheme MultipleImageView \
+           -workspace MultipleImageView.xcworkspace \
+           -destination 'generic/platform=iOS Simulator' | xcbeautify --renderer github-actions
