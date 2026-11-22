@@ -4,10 +4,14 @@ on: push
 
 jobs:
   build:
-     runs-on: macos-latest
+     runs-on: xcode-27
 
      steps:
-     - uses: actions/checkout@v4
+     - uses: actions/checkout@v7.0.1
 
      - name: Build
-       run: swift build -Xswiftc -sdk -Xswiftc "$(xcrun --sdk iphonesimulator --show-sdk-path)" -Xswiftc -target -Xswiftc x86_64-apple-ios13.0-simulator
+       run: |
+         xcodebuild build \
+           -scheme MultipleImageView \
+           -workspace MultipleImageView.xcworkspace \
+           -destination 'generic/platform=iOS Simulator' | xcbeautify --renderer github-actions

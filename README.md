@@ -18,7 +18,7 @@ Displaying multiple images like Twitter.
 ### CocoaPods
 
 ```ruby
-pod 'MultipleImageView'
+pod 'MultipleImageView', :git => 'https://github.com', :tag => '0.3.0'
 ```
 
 ### Carthage
@@ -30,7 +30,7 @@ github "nnsnodnb/MultipleImageView"
 ### Swift Package Manager
 
 ```swift
-// swift-tools-version:5.0
+// swift-tools-version:6.0
 import PackageDescription
 
 let package = Package(
@@ -38,7 +38,7 @@ let package = Package(
     dependencies: [
         .package(name: "MultipleImageView",
                  url: "https://github.com/nnsnodnb/MultipleImageView.git",
-                 from: "0.2.0")
+                 from: "0.3.0")
     ],
     .targets: [
         .target(name: "SampleApp,
