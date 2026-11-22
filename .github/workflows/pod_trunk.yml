@@ -11,13 +11,13 @@ jobs:
     timeout-minutes: 10
   
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7.0.1
 
     - name: Setup ruby
-      uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@v1.343.0
       with:
         bundler-cache: true
-        ruby-version: "3.1"
+        ruby-version: "4.0.10"
 
     - name: Trunk push
       env:
